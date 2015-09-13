@@ -1,0 +1,1 @@
+find ./ -not -iname "*.sh" -type f -mtime -2 | xargs -I x mv x _x
