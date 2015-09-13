@@ -22,7 +22,7 @@ do
     if [ "$new_state" != "$state" ] ; then
         state=$new_state
         description=${state_description[$state]}
-        wall "Anton Kuznetsov is $description"
+        echo "Anton Kuznetsov is $description" > wall 
         echo "State changed. Current is $description" > /dev/stderr
 	fi
 	sleep 1m
