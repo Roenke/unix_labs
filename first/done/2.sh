@@ -1,2 +1,2 @@
 #!/bin/bash
-cal | tr ' ' '\n' | grep '_\b..'     
+cal | tr ' ' '\n' | grep '_\b..'
