@@ -1,2 +1,5 @@
 #!/bin/bash
-cat ~/.bash_history | tr '|;&' '\n' | grep $1 | wc -l
+# file="../test_hist"
+file=~/.bash_history
+
+cat "$file" | tr '|;&' '\n' | column -t | grep -E "^$1" | wc -l

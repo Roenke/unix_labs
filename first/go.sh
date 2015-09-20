@@ -9,8 +9,8 @@ function show_usage {
 
 
 if (( $# != 4 ));then
-    show_usage "wrong number of arguments"
-    exit 1
+	show_usage "wrong number of arguments"
+	exit 1
 fi
 
 while getopts "i:o:" opt
@@ -25,20 +25,20 @@ esac
 done
 
 if [ -z ${src+x} ]; then 
-    show_usage "src is unset"
-    exit 1
+	show_usage "src is unset"
+	exit 1
 elif [ -z ${dest+x} ]; then 
-    show_usage "dest is unset"
-    exit 1
+	show_usage "dest is unset"
+	exit 1
 fi
 
 if [ ! -d ./"$src" ] ; then
-    echo "Input directory not found"
-    exit 1
+	echo "Input directory not found"
+	exit 1
 fi
 
 if [ ! -d ./"$dest" ] ; then
-    mkdir "$dest"
+	mkdir "$dest"
 fi
 
 cd "$src"; find ./* -executable -print0 | xargs -0 -I x cp --parents -- "x" "../$dest"
