@@ -1,0 +1,6 @@
+bash
+bash -p arg1
+list bash
+list ;            bash
+list & bash
+list|bash
