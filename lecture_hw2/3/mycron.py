@@ -24,7 +24,7 @@ def process():
             break
         t = int(time_str)
         command = tasks_file.readline()
-        tasks.append((start_time + datetime.timedelta(seconds=t), (t, command)))
+        tasks.append((start_time + datetime.timedelta(minutes=t), (t, command)))
         format_msg = 'Successful parse command "{0}". With interval = {1}'
         log(format_msg.format(command, t))
 
@@ -38,7 +38,7 @@ def process():
             t = nearest[1][0]
             log('Execute: {0}'.format(command))
             subprocess.Popen(['bash', '-c', command])
-            next_time = datetime.datetime.utcnow() + datetime.timedelta(seconds=t)
+            next_time = datetime.datetime.utcnow() + datetime.timedelta(minutes=t)
             heapq.heappush(tasks, (next_time, nearest[1]))
 
         time.sleep(1)
