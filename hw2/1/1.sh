@@ -11,9 +11,9 @@ prev=1
 i=1
 while (( i < $1 )) ;
 do
-	let "next=$prevprev + $prev"
-	let "prevprev=$prev"
-	let "prev=$next"
+	next=$(echo "$prevprev + $prev" | bc)
+	prevprev=$(echo "$prev" | bc)
+	prev=$(echo "$next" | bc)
 	((++i))
 done
 
