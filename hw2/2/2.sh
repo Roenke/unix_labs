@@ -34,5 +34,9 @@ function get_line {
 		echo "$line   $line"
 	done
 }
+if(( $1 == 0 )); then
+	echo ""
+	exit 0
+fi
 let "n=$1 - 1"
 get_line $n
