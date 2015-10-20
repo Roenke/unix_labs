@@ -1,7 +1,7 @@
 #!/bin/bash
 base_file="./base_file"
 touch base_file
-total_lines=$(wc -l "$base_file")
+total_lines=$(cat "$base_file" | wc -l)
 tmp_file=$(mktemp ./temp.XXXX)
 case "$1" in
  "push_back" )
@@ -16,19 +16,19 @@ case "$1" in
  ;;
 
  "pop_back" )
-    if (( total_lines = 0 )); then
+    if (( total_lines == 0 )); then
         rm "$tmp_file"
         exit 1
     fi
     result=$(tail -n 1 "$base_file")
-    new_size=$((total_lines - 1))
-    head -n "$new_size" "$base_file" > "$tmp_file"
+    ((--total_lines))
+    head -n "$total_lines" "$base_file" > "$tmp_file"
     cat "$tmp_file" > "$base_file"
     echo "$result"
  ;;
 
  "pop_front" )
-    if (( total_lines = 0 )); then
+    if (( total_lines == 0 )); then
         rm "$tmp_file"
         exit 1
     fi
@@ -39,3 +39,5 @@ case "$1" in
  ;;
 
 esac
+
+rm "$tmp_file"
