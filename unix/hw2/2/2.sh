@@ -1,5 +1,4 @@
 #!/bin/bash
-# fdgdfg
 
 edge="|"
 plus="+"
